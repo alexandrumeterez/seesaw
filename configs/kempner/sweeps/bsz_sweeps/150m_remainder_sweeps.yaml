@@ -1,0 +1,99 @@
+wandb:
+  group: final-bsz-adam-continuous 
+  project: batch-size-sched
+  name: 150m-adam-half
+optimizer: 
+  beta_0: 0.9
+  beta_1: 0.95
+  eps: 1.0e-8
+  decouple_weight_decay: false
+  weight_decay: 0.0
+  decay_norm_and_bias: true
+  decay_embeddings: true
+  metrics_log_interval: 100
+sweep: # we do 1 point above the best
+  # - scheduler:
+  #     batch_size_increase_factor: 1.1
+  #     name: ["step_cosine_half_with_warmup"]
+  #     lr_decay_factor: 0.953462
+  #     t_warmup: 3.3e8
+  #     units: "tokens"
+  #     lr_decay_factor_for_token_counts: 0.9090909
+  #   global_train_batch_size: 64
+  #   max_duration: 3.3e9T
+  #   eval_token_interval: 100_000_000
+  #   optimizer:
+  #     name: adamw
+  #     learning_rate: [1.0e-3, 3.0e-3, 1.0e-2, 3.0e-2]
+  # - scheduler:
+  #     name: ["cosine_with_warmup"]
+  #     t_warmup: 3.3e8
+  #     units: "tokens"
+  #   global_train_batch_size: 64
+  #   max_duration: 3.3e9T
+  #   eval_token_interval: 100_000_000
+  #   optimizer:
+  #     name: adamw
+  #     learning_rate: [1.0e-3, 3.0e-3, 1.0e-2, 3.0e-2]
+  # - scheduler:
+  #     batch_size_increase_factor: 1.1
+  #     name: ["step_cosine_half_with_warmup"]
+  #     lr_decay_factor: 0.953462
+  #     t_warmup: 3.3e8
+  #     units: "tokens"
+  #     lr_decay_factor_for_token_counts: 0.9090909
+  #   global_train_batch_size: 128
+  #   max_duration: 3.3e9T
+  #   eval_token_interval: 100_000_000
+  #   optimizer:
+  #     name: adamw
+  #     learning_rate: [1.0e-2, 3.0e-2]
+  # - scheduler:
+  #     batch_size_increase_factor: 1.1
+  #     name: ["step_cosine_half_with_warmup"]
+  #     lr_decay_factor: 0.953462
+  #     t_warmup: 3.3e8
+  #     units: "tokens"
+  #     lr_decay_factor_for_token_counts: 0.9090909
+  #   global_train_batch_size: 256
+  #   max_duration: 3.3e9T
+  #   eval_token_interval: 100_000_000
+  #   optimizer:
+  #     name: adamw
+  #     learning_rate: [1.0e-2, 3.0e-2]
+  # - scheduler:
+  #     batch_size_increase_factor: 1.1
+  #     name: ["step_cosine_half_with_warmup"]
+  #     lr_decay_factor: 0.953462
+  #     t_warmup: 3.3e8
+  #     units: "tokens"
+  #     lr_decay_factor_for_token_counts: 0.9090909
+  #   global_train_batch_size: 512
+  #   max_duration: 3.3e9T
+  #   eval_token_interval: 100_000_000
+  #   optimizer:
+  #     name: adamw
+  #     learning_rate: [1.0e-2, 3.0e-2]
+  - scheduler:
+      batch_size_increase_factor: 1.1
+      name: ["step_cosine_half_with_warmup"]
+      lr_decay_factor: 0.953462
+      t_warmup: 3.3e8
+      units: "tokens"
+      lr_decay_factor_for_token_counts: 0.9090909
+    global_train_batch_size: 1024
+    max_duration: 3.3e9T
+    eval_token_interval: 100_000_000
+    optimizer:
+      name: adamw
+      learning_rate: [1.0e-3, 3.0e-3, 1.0e-2, 3.0e-2]
+  - scheduler:
+      name: ["cosine_with_warmup"]
+      t_warmup: 3.3e8
+      units: "tokens"
+    global_train_batch_size: 1024
+    max_duration: 3.3e9T
+    eval_token_interval: 100_000_000
+    optimizer:
+      name: adamw
+      learning_rate: [1.0e-3, 3.0e-3, 1.0e-2, 3.0e-2]

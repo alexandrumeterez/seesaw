@@ -1,0 +1,43 @@
+# 1 jobs
+
+device_train_microbatch_size: 64
+global_train_batch_size: 1024
+max_duration: 3125
+
+wandb:
+  group: sooptimizers-150-1M-1
+optimizer:
+  weight_decay: 0.0
+  max_precond_dim: 10000
+  projection_type: "full"
+  precondition_frequency: 1
+  beta_1: 0.95
+  shampoo_beta: -1
+  eps: 1.0e-8
+  beta_0: 0.95
+  shampoo_exp_1: 2
+  shampoo_exp_2: 2
+  shampoo_eps: 1e-11
+scheduler:
+  name: cosine_with_warmup
+  t_warmup: 500
+model:
+  max_sequence_length: 1024
+
+
+
+sweep:
+  #- optimizer:
+  #    name: [stableshampoo, shampoo_orig]
+  #    learning_rate: [3.16e-3, 1.0e-2, 3.16e-2]
+  #- optimizer:
+  #    name: [shampoo_orig]
+  #    learning_rate: [3.16e-3, 1.0e-2, 3.16e-2]
+  #    max_precond_dim: 256
+  - optimizer:
+      name: [shampoo_orig]
+      learning_rate: [3.16e-3, 1.0e-2, 3.16e-2]
+      max_precond_dim: 1024
+
+save_overwrite: true
+save_interval: 1000000
