@@ -1,0 +1,15 @@
+# 1 jobs
+wandb:
+  group: optimizers-1
+device_train_microbatch_size: 128
+optimizer:
+  weight_decay: 0.0
+  eps: 1.0e-15
+  beta_0: 0.9
+  beta_1: 0.95
+save_count_log_scale_unsharded: 10
+save_num_unsharded_checkpoints_to_keep: 11
+sweep:
+  - optimizer:
+      name: adafactorw
+      learning_rate: [3.16e-2]

@@ -1,0 +1,16 @@
+# 54 jobs
+wandb:
+  group: optimizers-7b-1
+
+# max_duration: 100000 # 13.1B tokens / (256 batch * 512 context)
+optimizer:
+  weight_decay: 0.0
+  eps: 1.0e-15
+  beta_0: 0.9
+  beta_1: 0.95
+save_count_log_scale_unsharded: 10
+save_num_unsharded_checkpoints_to_keep: 11
+sweep:
+  - optimizer:
+      name: adamw
+      learning_rate: [1.0e-3]

@@ -1,0 +1,14 @@
+# 8 jobs
+wandb:
+  group: optimizers-1
+device_train_microbatch_size: 128
+optimizer:
+  weight_decay: 0.0
+  eps: 1.0e-15
+save_count_log_scale_unsharded: 10
+save_num_unsharded_checkpoints_to_keep: 11
+sweep:
+  - optimizer:
+      name: signsgd
+      learning_rate: [1.0e-5, 1.0e-4, 1.0e-3, 1.0e-2, 1.0e-1]
+      beta_0: [0.9]

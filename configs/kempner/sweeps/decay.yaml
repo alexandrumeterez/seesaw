@@ -1,0 +1,28 @@
+# 7 jobs
+sweep:
+  - device_train_microbatch_size: 64
+    wandb:
+      group: decay-1
+    optimizer:
+      name: adamw
+      learning_rate: 1.0e-3
+      decouple_weight_decay: true
+      weight_decay: [1.0e-5, 1.0e-4, 1.0e-3]
+      decay_norm_and_bias: true
+      decay_embeddings: true
+      eps: 1.0e-15
+      beta_0: 0.9
+      beta_1: 0.95
+  - device_train_microbatch_size: 64
+    wandb:
+      group: decay-1
+    optimizer:
+      name: adamw
+      learning_rate: 1.0e-3
+      decouple_weight_decay: false
+      weight_decay: [0.0, 0.01, 0.1, 1.0]
+      decay_norm_and_bias: true
+      decay_embeddings: true
+      eps: 1.0e-15
+      beta_0: 0.9
+      beta_1: 0.95

@@ -1,0 +1,94 @@
+wandb:
+  group: final-bsz-adam-continuous 
+  project: batch-size-sched
+  name: 300m-adam
+optimizer: 
+  beta_0: 0.9
+  beta_1: 0.95
+  eps: 1.0e-8
+  decouple_weight_decay: false
+  weight_decay: 0.0
+  decay_norm_and_bias: true
+  decay_embeddings: true
+  metrics_log_interval: 100
+sweep: # first are for altering bsz and lr same time, then separate
+  - scheduler:
+      batch_size_increase_factor: 1.1
+      name: ["step_cosine_half_with_warmup"]
+      lr_decay_factor: 0.953462
+      t_warmup: 6.6e8
+      units: "tokens"
+    global_train_batch_size: 360
+    max_duration: 6.6e9T
+    optimizer:
+      name: adamw
+      learning_rate: [1.0e-2, 3.0e-2]
+  - scheduler:
+      name: ["cosine_with_warmup"]
+      t_warmup: 6.6e8
+      units: "tokens"
+    global_train_batch_size: 360
+    max_duration: 6.6e9T
+    optimizer:
+      name: adamw
+      learning_rate: [1.0e-2, 3.0e-2]
+  - scheduler:
+      batch_size_increase_factor: 1.1
+      name: ["step_cosine_half_with_warmup"]
+      lr_decay_factor: 0.953462
+      t_warmup: 6.6e8
+      units: "tokens"
+    global_train_batch_size: 512
+    max_duration: 6.6e9T
+    optimizer:
+      name: adamw
+      learning_rate: [1.0e-2, 3.0e-2]
+  - scheduler:
+      name: ["cosine_with_warmup"]
+      t_warmup: 6.6e8
+      units: "tokens"
+    global_train_batch_size: 512
+    max_duration: 6.6e9T
+    optimizer:
+      name: adamw
+      learning_rate: [1.0e-2, 3.0e-2]
+  - scheduler:
+      batch_size_increase_factor: 1.1
+      name: ["step_cosine_half_with_warmup"]
+      lr_decay_factor: 0.953462
+      t_warmup: 6.6e8
+      units: "tokens"
+    global_train_batch_size: 256
+    max_duration: 6.6e9T
+    optimizer:
+      name: adamw
+      learning_rate: [1.0e-2, 3.0e-2]
+  - scheduler:
+      name: ["cosine_with_warmup"]
+      t_warmup: 6.6e8
+      units: "tokens"
+    global_train_batch_size: 256
+    max_duration: 6.6e9T
+    optimizer:
+      name: adamw
+      learning_rate: [1.0e-2, 3.0e-2]
+  - scheduler:
+      batch_size_increase_factor: 1.1
+      name: ["step_cosine_half_with_warmup"]
+      lr_decay_factor: 0.953462
+      t_warmup: 6.6e8
+      units: "tokens"
+    global_train_batch_size: 128
+    max_duration: 6.6e9T
+    optimizer:
+      name: adamw
+      learning_rate: [1.0e-2, 3.0e-2]
+  - scheduler:
+      name: ["cosine_with_warmup"]
+      t_warmup: 6.6e8
+      units: "tokens"
+    global_train_batch_size: 128
+    max_duration: 6.6e9T
+    optimizer:
+      name: adamw
+      learning_rate: [1.0e-2, 3.0e-2]

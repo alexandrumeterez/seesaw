@@ -1,0 +1,29 @@
+# 1 jobs
+
+device_train_microbatch_size: 64
+
+wandb:
+  group: optimizers-300-2
+optimizer:
+  weight_decay: 0.0
+  max_precond_dim: 10000
+  projection_type: "full"
+  precondition_frequency: 10
+  beta_1: 0.95
+  shampoo_beta: -1
+  eps: 1.0e-15
+  beta_0: 0.9
+scheduler:
+  name: cosine_with_warmup
+  t_warmup: 5000
+
+
+
+sweep:
+  - optimizer:
+      name: [stablershampoo2]
+      learning_rate: [1.0e-2, 3.16e-2]
+      precondition_frequency: 10
+      metrics_log_interval: 1
+save_overwrite: true
+save_interval: 1000000

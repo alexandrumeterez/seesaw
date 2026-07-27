@@ -1,0 +1,9 @@
+# 12 jobs 
+sweep:
+  - device_train_microbatch_size: 64
+    wandb:
+      group: precision-1
+    precision: [amp_bf16, amp_fp16, fp32]
+    fsdp:
+      precision: [mixed, pure]
+      sharding_strategy: [FULL_SHARD, NO_SHARD]

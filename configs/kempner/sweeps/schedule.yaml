@@ -1,0 +1,10 @@
+# 18 jobs 
+sweep:
+  - device_train_microbatch_size: 64
+    wandb:
+      group: schedule-1
+    scheduler:
+      name: cosine_with_warmup
+      t_warmup: 2500 # [1250, 2500]
+      alpha_0: 0 # [0, 0.01, 0.1]
+      alpha_f: [0.01, 0.1] # [0, 0.01, 0.1]
